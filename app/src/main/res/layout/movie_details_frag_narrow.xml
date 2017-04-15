@@ -1,0 +1,92 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="60dp">
+
+        <TextView
+            android:id="@+id/movie_title"
+            style="@style/Base.TextAppearance.AppCompat.Large"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:textColor="@android:color/black"
+            android:textStyle="bold"
+            tools:text="Boss Baby" />
+
+        <TextView
+            android:id="@+id/movie_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/movie_title"
+            android:layout_margin="10dp"
+            android:drawableLeft="@drawable/ic_calender"
+            android:drawablePadding="10dp"
+            android:drawableStart="@drawable/ic_calender"
+            android:textSize="17sp"
+            tools:text="23-03-2017" />
+
+        <ImageView
+            android:id="@+id/movie_poster"
+            android:layout_width="400dp"
+            android:layout_height="wrap_content"
+            android:scaleType="centerInside"
+            android:layout_below="@id/movie_date"
+            android:layout_centerHorizontal="true"
+            tools:src="@drawable/ic_default_movie_poster" />
+
+        <ProgressBar
+            android:id="@+id/progress_bar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/movie_date"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="080dp" />
+
+        <RelativeLayout
+            android:id="@+id/movie_rating_parent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/movie_poster"
+            android:layout_centerHorizontal="true">
+
+            <TextView
+                android:id="@+id/movie_av_rating"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="60sp"
+                tools:text="5.8" />
+
+            <RatingBar
+                android:id="@+id/movie_av_rating_star"
+                style="@style/Widget.AppCompat.RatingBar.Small"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp"
+                android:layout_toEndOf="@+id/movie_av_rating"
+                android:layout_toRightOf="@+id/movie_av_rating"
+                android:isIndicator="true"
+                android:max="10"
+                android:numStars="10"
+                android:rating="5" />
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/movie_synopsis"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/movie_rating_parent"
+            android:paddingBottom="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="16dp" />
+
+    </RelativeLayout>
+
+</ScrollView>
