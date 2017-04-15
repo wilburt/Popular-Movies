@@ -21,4 +21,4 @@ Replace "YOUR_API_KEY" with your API key.
 
 <h3>Tablet</h3>
 
-<img src="https://github.com/wilburt/Popular-Movies/blob/master/screenshots/screenshot4.png" width="500px" height="auto"/>
+<img src="https://github.com/wilburt/Popular-Movies/blob/master/screenshots/screenshot4.png" width="600px" height="auto"/>
