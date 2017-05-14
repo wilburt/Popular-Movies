@@ -40,13 +40,4 @@ public class MyConvert {
         return dp * ((float) metrics.densityDpi / DisplayMetrics.DENSITY_DEFAULT);
     }
 
-    /**
-     * Converts hours to seconds
-     * @param hrs the time in hours
-     * @return the time in seconds
-     */
-    public static int HrsToSec(int hrs) {
-        return hrs * 3600;
-    }
-
 }

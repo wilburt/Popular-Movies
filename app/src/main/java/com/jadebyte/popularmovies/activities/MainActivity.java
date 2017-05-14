@@ -12,7 +12,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.PopupMenu;
 import android.support.v7.widget.Toolbar;
 import android.text.Html;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -21,6 +20,7 @@ import android.widget.TextView;
 
 import com.jadebyte.popularmovies.R;
 import com.jadebyte.popularmovies.fragments.BlankFragment;
+import com.jadebyte.popularmovies.fragments.FavouriteMoviesList;
 import com.jadebyte.popularmovies.fragments.MovieDetailsFragment;
 import com.jadebyte.popularmovies.fragments.MovieListFragment;
 import com.jadebyte.popularmovies.listeners.MovieClickedListener;
@@ -52,7 +52,7 @@ public class MainActivity extends AppCompatActivity implements MovieClickedListe
 
         if (savedInstanceState == null) {
             checkItemIndex = 0;
-            launchMovieListFragment(Constants.URLS.POPULAR_URL);
+            launchMovieListFragment(Constants.URLS.getPopularUrl());
             launchBlankFragment();
         } else {
             checkItemIndex = savedInstanceState.getInt("checkItemIndex");
@@ -82,6 +82,15 @@ public class MainActivity extends AppCompatActivity implements MovieClickedListe
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
         ft.setCustomAnimations(R.anim.fade_in, R.anim.fade_out, R.anim.fade_in, R.anim.fade_out);
         ft.replace(R.id.movie_content_frame, fragment, "MovieListFragment");
+        ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
+        ft.commitAllowingStateLoss();
+    }
+
+    private void launchFavoriteListFragment() {
+        FavouriteMoviesList fragment = new FavouriteMoviesList();
+        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+        ft.setCustomAnimations(R.anim.fade_in, R.anim.fade_out, R.anim.fade_in, R.anim.fade_out);
+        ft.replace(R.id.movie_content_frame, fragment, "FavouriteMoviesList");
         ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
         ft.commitAllowingStateLoss();
     }
@@ -164,21 +173,29 @@ public class MainActivity extends AppCompatActivity implements MovieClickedListe
                 
                 switch (item.getItemId()) {
                     case R.id.sort_popular:
-                        moviesUrl = Constants.URLS.POPULAR_URL;
+                        moviesUrl = Constants.URLS.getPopularUrl();
                         checkItemIndex = 0;
                         break;
 
                     case R.id.sort_rating:
-                        moviesUrl = Constants.URLS.HIGHEST_RATING_URL;
+                        moviesUrl = Constants.URLS.getHighestRatingUrl();
                         checkItemIndex = 1;
                         break;
+
+                    case R.id.sort_favourites:
+                        checkItemIndex = 2;
                     
                     default:
                         break;
                 }
 
                 if (!item.isChecked()) {
-                    launchMovieListFragment(moviesUrl);
+                    if (moviesUrl != null) {
+                        launchMovieListFragment(moviesUrl);
+
+                    } else {
+                        launchFavoriteListFragment();
+                    }
                     return true;
                 } else {
                     return false;
@@ -187,9 +204,7 @@ public class MainActivity extends AppCompatActivity implements MovieClickedListe
         });
         popup.inflate(R.menu.sort_menu);
         popup.show();
-        Log.i("MainActivity", "showLabelsPopup: to check " + checkItemIndex + " while the originals are  Sort: " + R.id.action_sort + "  and License: " + R.id.action_license);
         final MenuItem popupItem = popup.getMenu().getItem(checkItemIndex);
-        Log.i("MainActivity", "showLabelsPopup: foundItem is " + popupItem);
         popupItem.setCheckable(true);
         popupItem.setChecked(true);
     }

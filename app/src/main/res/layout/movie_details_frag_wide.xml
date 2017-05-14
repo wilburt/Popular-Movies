@@ -1,23 +1,39 @@
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v4.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_alignParentBottom="@dimen/margin_medium"
     android:background="@android:color/white">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="15dp">
+        android:layout_margin="@dimen/margin_medium">
 
         <TextView
             android:id="@+id/movie_title"
             style="@style/Base.TextAppearance.AppCompat.Large"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="@dimen/margin_medium"
+            android:layout_marginRight="@dimen/margin_xx_large"
+            android:layout_marginEnd="@dimen/margin_xx_large"
             android:textColor="@android:color/black"
             android:textStyle="bold"
             tools:text="Boss Baby" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_star_yellow"
+            android:padding="@dimen/padding_medium"
+            android:id="@+id/movie_favourite"
+            android:visibility="gone"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:layout_marginTop="@dimen/margin_medium"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"/>
 
         <TextView
             android:id="@+id/movie_date"
@@ -26,9 +42,9 @@
             android:layout_below="@+id/movie_title"
             android:layout_margin="10dp"
             android:drawableLeft="@drawable/ic_calender"
-            android:drawablePadding="10dp"
+            android:drawablePadding="@dimen/margin_medium"
             android:drawableStart="@drawable/ic_calender"
-            android:textSize="17sp"
+            android:textAppearance="?android:attr/textAppearanceMedium"
             tools:text="23-03-2017" />
 
         <ImageView
@@ -36,7 +52,7 @@
             android:layout_below="@id/movie_date"
             android:layout_centerHorizontal="true"
             tools:src="@drawable/ic_default_movie_poster"
-            android:layout_width="300dp"
+            android:layout_width="@dimen/img_video_width"
             android:layout_height="wrap_content"
             android:scaleType="centerInside"/>
 
@@ -46,7 +62,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/movie_date"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="080dp" />
+            android:layout_marginTop="@dimen/margin_xx_large" />
 
         <RelativeLayout
             android:id="@+id/movie_rating_parent"
@@ -59,7 +75,7 @@
                 android:id="@+id/movie_av_rating"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="60sp"
+                android:textSize="@dimen/text_size_xx_large"
                 tools:text="5.8" />
 
             <RatingBar
@@ -68,8 +84,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
-                android:layout_marginLeft="10dp"
-                android:layout_marginStart="10dp"
+                android:layout_marginLeft="@dimen/margin_medium"
+                android:layout_marginStart="@dimen/margin_medium"
                 android:layout_toEndOf="@+id/movie_av_rating"
                 android:layout_toRightOf="@+id/movie_av_rating"
                 android:isIndicator="true"
@@ -83,10 +99,95 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/movie_rating_parent"
-            android:paddingBottom="10dp"
-            android:layout_marginBottom="10dp"
-            android:layout_marginTop="16dp" />
+            android:paddingBottom="@dimen/padding_medium"
+            android:layout_marginBottom="@dimen/margin_medium"
+            android:layout_marginTop="@dimen/margin_large" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/trailers"
+            android:layout_below="@+id/movie_synopsis"
+            android:id="@+id/trailers_title"
+            android:layout_marginBottom="@dimen/margin_medium"
+            android:textAppearance="?android:attr/textAppearanceLarge"/>
+
+        <android.support.v7.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/movie_trailers"
+            android:layout_below="@+id/trailers_title"/>
+
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:id="@+id/trailers_progress"
+            android:visibility="gone"
+            android:layout_below="@+id/trailers_title"/>
+
+        <Button
+            android:id="@+id/trailers_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:background="@drawable/buttons_bg"
+            android:stateListAnimator="@null"
+            android:text="@string/show_trailers"
+            android:textColor="@color/white"
+            android:visibility="gone"
+            android:textStyle="bold"
+            android:layout_marginBottom="@dimen/margin_large"
+            android:layout_below="@+id/trailers_title"
+            android:layout_centerHorizontal="true"
+            android:paddingLeft="@dimen/padding_x_large"
+            android:paddingRight="@dimen/padding_x_large"
+            tools:ignore="UnusedAttribute" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/reviews"
+            android:layout_below="@+id/movie_trailers"
+            android:id="@+id/reviews_title"
+            android:layout_marginBottom="@dimen/margin_medium"
+            android:layout_marginTop="@dimen/margin_x_large"
+            android:textAppearance="?android:attr/textAppearanceLarge"/>
+
+        <android.support.v7.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/movie_reviews"
+            android:paddingBottom="@dimen/margin_medium"
+            android:layout_below="@+id/reviews_title"/>
+
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:id="@+id/review_progress"
+            android:visibility="gone"
+            android:paddingBottom="@dimen/margin_medium"
+            android:layout_below="@+id/reviews_title"/>
+
+        <Button
+            android:id="@+id/reviews_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:background="@drawable/buttons_bg"
+            android:stateListAnimator="@null"
+            android:text="@string/show_reviews"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:layout_below="@+id/reviews_title"
+            android:visibility="gone"
+            android:layout_marginBottom="@dimen/margin_medium"
+            android:layout_centerHorizontal="true"
+            android:paddingLeft="@dimen/padding_x_large"
+            android:paddingRight="@dimen/padding_x_large"
+            tools:ignore="UnusedAttribute" />
 
     </RelativeLayout>
 
-</ScrollView>
+</android.support.v4.widget.NestedScrollView>

@@ -8,7 +8,6 @@ import android.os.Parcelable;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -40,6 +39,7 @@ import com.jadebyte.popularmovies.views.GridAutoFitLayoutManager;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -161,12 +161,12 @@ public class MovieListFragment extends Fragment {
                 moreMoviesUrl = movieUrl + "&page=" + getPageNumber();
                 getMovieArray(moreMoviesUrl, true);
             }
+
         });
     }
 
     // Get movies from themoviesdb.org
     private void getMovieArray(String url, final boolean isLoadMoreMovies){
-        Log.i(TAG, "getMovieArray: " + url);
         if (isLoadMoreMovies) {
             initialItems  = adapter == null ? 0 : adapter.getItemCount();
             isMoreLoading = true;

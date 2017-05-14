@@ -1,9 +1,12 @@
 package com.jadebyte.popularmovies.pojos;
 
 
+import android.database.Cursor;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.support.annotation.NonNull;
+
+import com.jadebyte.popularmovies.database.MovieContract.MovieEntry;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -17,6 +20,7 @@ public class Movie implements Parcelable, Collection<Movie> {
     private String poster;
     private int voteAverage;
     private String plotSynopsis;
+    private int id;
 
     public Movie(JSONObject movieObject) throws JSONException{
         setTitle(movieObject.getString("title"));
@@ -24,6 +28,16 @@ public class Movie implements Parcelable, Collection<Movie> {
         setPoster(movieObject.getString("poster_path"));
         setVoteAverage(movieObject.getInt("vote_average"));
         setPlotSynopsis(movieObject.getString("overview"));
+        setId(movieObject.getInt("id"));
+    }
+
+    public Movie(Cursor cursor) {
+        setTitle(cursor.getString(cursor.getColumnIndex(MovieEntry.TITLE)));
+        setReleaseDate(cursor.getString(cursor.getColumnIndex(MovieEntry.RELEASE_DATE)));
+        setPoster(cursor.getString(cursor.getColumnIndex(MovieEntry.POSTER)));
+        setVoteAverage(cursor.getInt(cursor.getColumnIndex(MovieEntry.VOTE_AVERAGE)));
+        setPlotSynopsis(cursor.getString(cursor.getColumnIndex(MovieEntry.PLOT_SYNOPSIS)));
+        setId(cursor.getInt(cursor.getColumnIndex(MovieEntry.MOVIE_ID)));
     }
 
     public String getTitle() {
@@ -66,6 +80,15 @@ public class Movie implements Parcelable, Collection<Movie> {
         this.plotSynopsis = plotSynopsis;
     }
 
+    public int getId() {
+        return id;
+    }
+
+    private void setId(int id) {
+        this.id = id;
+    }
+
+
     @Override
     public int describeContents() {
         return 0;
@@ -78,6 +101,7 @@ public class Movie implements Parcelable, Collection<Movie> {
         dest.writeString(this.poster);
         dest.writeInt(this.voteAverage);
         dest.writeString(this.plotSynopsis);
+        dest.writeInt(this.id);
     }
 
     protected Movie(Parcel in) {
@@ -86,9 +110,10 @@ public class Movie implements Parcelable, Collection<Movie> {
         this.poster = in.readString();
         this.voteAverage = in.readInt();
         this.plotSynopsis = in.readString();
+        this.id = in.readInt();
     }
 
-    public static final Parcelable.Creator<Movie> CREATOR = new Parcelable.Creator<Movie>() {
+    public static final Creator<Movie> CREATOR = new Creator<Movie>() {
         @Override
         public Movie createFromParcel(Parcel source) {
             return new Movie(source);

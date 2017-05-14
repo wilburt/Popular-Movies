@@ -1,4 +1,3 @@
-
 <resources>
     <string name="app_name">Popular Movies</string>
 
@@ -21,5 +20,14 @@
     <string name="sort">Sort</string>
     <string name="most_popular">Most popular</string>
     <string name="highest_rated">Highest rated</string>
+    <string name="favourites">Favourites</string>
+    <string name="trailers">Trailers</string>
+    <string name="reviews">Reviews</string>
+    <string name="show_reviews">Show reviews</string>
+    <string name="show_trailers">Show trailers</string>
+    <string name="empty_favourite">You haven\'t favourited any movies yet</string>
+    <string name="content_authority">com.jadebyte.popularmovies</string>
+    <string name="movie_favourited">Movie favourited</string>
+    <string name="movie_unfavour">Movie unfavourited</string>
 
 </resources>

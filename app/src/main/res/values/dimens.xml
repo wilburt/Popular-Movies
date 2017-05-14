@@ -3,4 +3,26 @@
     <!-- Default screen margins, per the Android Design guidelines. -->
     <!-- Default screen margins, per the Android Design guidelines. -->
 
+    <dimen name="video_thumb_height">150dp</dimen>
+    <dimen name="youtube_size">70dp</dimen>
+
+    <dimen name="margin_small">5dp</dimen>
+    <dimen name="margin_medium">10dp</dimen>
+    <dimen name="margin_large">15dp</dimen>
+    <dimen name="margin_xx_large">70dp</dimen>
+    <dimen name="margin_x_large">30dp</dimen>
+    <dimen name="padding_small">5dp</dimen>
+    <dimen name="padding_medium">10dp</dimen>
+    <dimen name="padding_large">15dp</dimen>
+    <dimen name="padding_x_large">20dp</dimen>
+    <dimen name="padding_xx_large">40dp</dimen>
+    <dimen name="text_size_x_small">12sp</dimen>
+    <dimen name="text_size_small">14sp</dimen>
+    <dimen name="text_size_medium">16sp</dimen>
+    <dimen name="text_size_x_medium">18sp</dimen>
+    <dimen name="text_size_large">22sp</dimen>
+    <dimen name="text_size_x_large">27sp</dimen>
+    <dimen name="text_size_xx_large">60sp</dimen>
+    <dimen name="img_video_width">300dp</dimen>
+    <dimen name="author_size">60dp</dimen>
 </resources>

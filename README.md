@@ -3,7 +3,6 @@
 <img src="https://github.com/wilburt/Popular-Movies/blob/master/app/src/main/ic_launcher-web.png" width="200px" height="200px"/>
 
 Fetches a movies using the themoviedb.org.
-Replace "YOUR_API_KEY" with your API key.
 
 <h2>Screenshots</h2>
 
