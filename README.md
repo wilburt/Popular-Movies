@@ -8,3 +8,4 @@ Fetches movies using the themoviedb.org.
 <p><img src="https://github.com/wilburt/Popular-Movies/blob/master/screenshot2.png" width="300px" height="auto"/></p>
 <p><img src="https://github.com/wilburt/Popular-Movies/blob/master/screenshot3.png" width="300px" height="auto"/></p>
 <p><img src="https://github.com/wilburt/Popular-Movies/blob/master/screenshot4.png" width="300px" height="auto"/></p>
+<p><img src="https://github.com/wilburt/Popular-Movies/blob/master/screenshot5.png" width="500px" height="auto"/></p>
